@@ -1,0 +1,8 @@
+{
+  "appId": "app.himi.messenger",
+  "appName": "Himi",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https"
+  }
+}
