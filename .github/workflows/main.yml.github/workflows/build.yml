@@ -29,13 +29,14 @@ jobs:
       - name: Accept licenses
         run: yes | sdkmanager --licenses || true
 
-      - name: Install Android platform
+      - name: Setup Android SDK
         run: sdkmanager "platforms;android-34" "build-tools;34.0.0"
 
-      - name: Capacitor init and add android
-        run: |
-          npx @capacitor/cli init "Himi" "app.himi.messenger" --web-dir www
-          npx @capacitor/cli add android
+      - name: Capacitor init
+        run: npx cap init "Himi" "app.himi.messenger" --web-dir www
+
+      - name: Add Android
+        run: npx cap add android
 
       - name: Sync
         run: npx cap sync android
@@ -48,5 +49,5 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: Himi-Messenger-APK
+          name: Himi-APK
           path: android/app/build/outputs/apk/debug/app-debug.apk
